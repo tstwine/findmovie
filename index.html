@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><Ex Movie Finder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>"
+
+    <script>
+      function getData() {
+        var searchTerm = $('#search').val();
+        var searchString = 'http://www.omdbapi.com/?t=' + searchTerm + '&r=json';
+
+        $.get(searchString, function(movieInformation) {
+          console.log(movieInformation);
+          $('#title').val(movieInformation.Title);
+          $('#director').val(movieInformation.Director);
+          $('#year').val(movieInformation.Year);
+          $('#poster').attr('src', movieInformation.Poster);
+        });
+    }
+  </script>
+ </head>
+
+<body>
+  <div class="container">
+      <h1 class="text-primary text-center">Movie Finder SPA</h1>
+
+      <form class="form-inline text-center">
+        <div class="form-group">
+          <label class="sr-only" for="search">Search</label>
+            <div class="input-group">
+            <input type="text" class="form-control" id="search" placeholder="Search for a movie...">
+          </div>
+        </div>
+       <button type="button" class="btn btn-primary" onclick="getData()">Find Movie Data</button>
+     </form>
+
+      <!-- //TITLE --->
+      <div class="form-group">
+        <label class="text-primary" for="title">Title</label>
+        <input type="text" class="form-control input-lg" id="title">
+      </div>
+
+        <!-- //DIRECTOR --->
+      <div class="form-group">
+        <label class="text-primary" for="director">Director</label>
+        <input type="text" class="form-control input-lg" id="director">
+      </div>
+
+          <!-- //YEAR --->
+      <div class="form-group">
+        <label class="text-primary" for="year">Year</label>
+        <input type="text" class="form-control input-lg" id="year">
+      </div>
+
+
+     <img id="poster" src="" />
+
+     <br />
+     <br />
+
+
+    <div class="container">
+  </body>
+</html>

@@ -8,7 +8,7 @@
     <script>
       function getData() {
         var searchTerm = $('#search').val();
-        var searchString = 'http://www.omdbapi.com/?t=' + searchTerm + '&r=json';
+        var searchString = 'https://www.omdbapi.com/?t=' + searchTerm + '&r=json';
 
         $.get(searchString, function(movieInformation) {
           console.log(movieInformation);
